@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhanish Ali | Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body data-theme="dark"> <div class="preloader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <main class="content-wrapper">
+        <header>
+            <nav class="main-nav">
+                <a href="#home" class="nav-logo">Dhanish</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Game</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle-button">
+                    <i class="fas fa-sun"></i> </button>
+            </nav>
+        </header>
+
+        <section id="home" class="hero-section">
+            <div class="hero-text">
+                <h1>Hello, I'm Dhanish.</h1>
+                <p>I'm a Developer focused on creating beautiful, functional, and modern web experiences.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
+            <div class="hero-tech-effect"></div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Me</h2>
+            <p>
+                As a lifelong tech enthusiast, I'm driven by a passion for building elegant and efficient solutions. I thrive on bridging the gap between creative design and robust technical implementation. My journey into development is fueled by a constant curiosity and a desire to learn new things, with a strong foundation in HTML, CSS, and JavaScript.
+            </p>
+            <p>
+                Outside of coding, you'll often find me on the basketball court. The game has taught me invaluable lessons about teamwork, discipline, and strategic thinking—skills that I bring to every project I undertake. I'm excited to channel my energy and skills into creating innovative web experiences.
+            </p>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Retro Snake Game</h2>
+            <p class="game-instructions">Use the Arrow Keys to move. Don't hit the walls or yourself!</p>
+            <div class="game-container">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+                <div id="gameOverScreen" class="hidden">
+                    <h2>Game Over</h2>
+                    <p>Your Score: <span id="finalScore">0</span></p>
+                    <button id="restartButton">Restart Game</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get in Touch</h2>
+            <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="contact-buttons-container">
+                 <a href="mailto:dhanisheeee@gmail.com" class="contact-button">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/dhanish-ali-87084634b" target="_blank" rel="noopener noreferrer" class="contact-button linkedin">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
