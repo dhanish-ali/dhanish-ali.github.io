@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body data-theme="dark"> <div class="preloader">
+<body data-theme="dark">
+    <div class="preloader">
         <div class="loader-circle"></div>
     </div>
+
+    <div class="retro-bg"></div>
 
     <main class="content-wrapper">
         <header>
@@ -20,42 +23,83 @@
                 <a href="#home" class="nav-logo">Dhanish</a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Game</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button id="theme-toggle" class="theme-toggle-button">
-                    <i class="fas fa-sun"></i> </button>
+                    <i class="fas fa-sun"></i>
+                </button>
             </nav>
         </header>
 
         <section id="home" class="hero-section">
             <div class="hero-text">
                 <h1>Hello, I'm Dhanish.</h1>
-                <p>I'm a Developer focused on creating beautiful, functional, and modern web experiences.</p>
+                <p>A Developer focused on creating beautiful, functional, and modern web experiences.</p>
                 <a href="#projects" class="cta-button">View My Work</a>
             </div>
-            <div class="hero-tech-effect"></div>
         </section>
 
         <section id="about" class="about-section">
             <h2>About Me</h2>
-            <p>
-                As a lifelong tech enthusiast, I'm driven by a passion for building elegant and efficient solutions. I thrive on bridging the gap between creative design and robust technical implementation. My journey into development is fueled by a constant curiosity and a desire to learn new things, with a strong foundation in HTML, CSS, and JavaScript.
-            </p>
-            <p>
-                Outside of coding, you'll often find me on the basketball court. The game has taught me invaluable lessons about teamwork, discipline, and strategic thinking—skills that I bring to every project I undertake. I'm excited to channel my energy and skills into creating innovative web experiences.
-            </p>
+            <div class="about-content">
+                <p>
+                    As a lifelong tech enthusiast, I'm driven by a passion for building elegant and efficient solutions. I thrive on bridging the gap between creative design and robust technical implementation. My journey into development is fueled by a constant curiosity and a desire to learn new things, with a strong foundation in HTML, CSS, and JavaScript.
+                </p>
+                <p>
+                    Outside of coding, you'll often find me on the basketball court. The game has taught me invaluable lessons about teamwork, discipline, and strategic thinking—skills that I bring to every project I undertake. I'm excited to channel my energy and skills into creating innovative web experiences.
+                </p>
+            </div>
+        </section>
+        
+        <section id="events" class="events-section">
+            <h2>Experience & Events</h2>
+            <div class="timeline">
+                <div class="timeline-item pop-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Assistant Coordinator</h3>
+                        <p>Played a key role in organizing and managing a major tech event, coordinating between teams and ensuring a smooth execution. This experience honed my leadership and communication skills under pressure.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="projects" class="projects-section">
-            <h2>Retro Snake Game</h2>
-            <p class="game-instructions">Use the Arrow Keys to move. Don't hit the walls or yourself!</p>
-            <div class="game-container">
-                <canvas id="gameCanvas" width="400" height="400"></canvas>
-                <div id="gameOverScreen" class="hidden">
-                    <h2>Game Over</h2>
-                    <p>Your Score: <span id="finalScore">0</span></p>
-                    <button id="restartButton">Restart Game</button>
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card pop-in">
+                    <div class="project-header">
+                        <h3>Aura BG Remover</h3>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <p>Inspired by the need for a free and accessible background removal tool, I developed Aura. It's a user-friendly web application that allows anyone to quickly and easily remove the background from their images without any cost.</p>
+                    <ul>
+                        <li><strong>Technology:</strong> Built with modern JavaScript and integrated with a powerful image processing API.</li>
+                        <li><strong>Challenge:</strong> The primary challenge was to create a seamless and intuitive user experience while ensuring efficient and accurate background removal.</li>
+                        <li><strong>Outcome:</strong> A fully functional, free-to-use tool that serves as a practical utility for designers, students, and content creators.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://dhanish-ali.github.io/Aura-bgremover/" target="_blank" class="retro-button">Live</a>
+                        <a href="https://github.com/dhanish-ali/Aura-bgremover" target="_blank" class="retro-button">Source</a>
+                    </div>
+                </div>
+
+                <div class="project-card pop-in">
+                    <div class="project-header">
+                        <h3>E-Commerce Clothing Store</h3>
+                         <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <p>Currently developing a bespoke e-commerce website for a local clothing boutique. The goal is to create a stylish, modern, and easy-to-navigate online shopping experience that reflects the brand's unique identity.</p>
+                     <ul>
+                        <li><strong>Features:</strong> Will include a dynamic product catalog, secure checkout process, user account management, and a fully responsive design.</li>
+                        <li><strong>Learning:</strong> This project is deepening my skills in full-stack development, including database management and server-side logic.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="#" class="retro-button disabled">Live (Coming Soon)</a>
+                        <a href="#" class="retro-button disabled">Source (Private)</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -70,13 +114,18 @@
                 <a href="https://www.linkedin.com/in/dhanish-ali-87084634b" target="_blank" rel="noopener noreferrer" class="contact-button linkedin">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-             <a href="abdnawwaf.github.io" target="_blank" rel="noopener noreferrer" class="contact-button">
-                    <i class="fab fa-linkedin"></i> Abd Nawwaf
+                <a href="https://github.com/dhanish-ali" target="_blank" rel="noopener noreferrer" class="contact-button github">
+                    <i class="fab fa-github"></i> GitHub
                 </a>
             </div>
         </section>
+
+        <footer>
+            <p>©️ 2024 Dhanish Ali</p>
+        </footer>
     </main>
 
     <script src="script.js"></script>
 </body>
 </html>
+
