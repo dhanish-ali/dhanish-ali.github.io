@@ -6,6 +6,9 @@
     --secondary-color: #333;
     --card-bg: #282828;
     --font-family: 'Poppins', sans-serif;
+    --retro-font: 'VT323', monospace;
+    --success-color: #4caf50;
+    --progress-color: #ff9800;
 }
 
 body[data-theme="light"] {
@@ -33,7 +36,30 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
 }
+
+/* Retro background effect */
+.retro-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(var(--accent-color-rgb, 0, 188, 212), 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--accent-color-rgb, 0, 188, 212), 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+body[data-theme="light"] .retro-bg {
+   --accent-color-rgb: 26, 26, 26;
+   opacity: 0.2;
+}
+
 
 /* Preloader Animation */
 .preloader {
@@ -74,6 +100,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 /* Navigation */
@@ -82,13 +110,19 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    background: rgba(var(--bg-color-rgb), 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .nav-logo {
     color: var(--accent-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     text-decoration: none;
+    font-family: var(--retro-font);
 }
 
 .nav-links {
@@ -101,6 +135,7 @@ body {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .nav-links a:hover {
@@ -111,160 +146,270 @@ body {
 .theme-toggle-button {
     background: var(--secondary-color);
     color: var(--text-color);
-    border: none;
-    width: 45px;
-    height: 45px;
+    border: 2px solid var(--accent-color);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
 }
 .theme-toggle-button:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
 }
 
 /* Sections */
 section {
-    padding: 4rem 2rem;
-    max-width: 1200px;
+    padding: 5rem 2rem;
+    max-width: 1000px;
     margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-family: var(--retro-font);
+    color: var(--accent-color);
 }
 
 /* Hero Section */
 .hero-section {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 80vh;
+    min-height: 80vh;
     position: relative;
-    overflow: hidden;
 }
-.hero-text {
-    position: relative;
-    z-index: 2;
-}
+
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
-    opacity: 0;
-    animation: fade-in-up 1s forwards;
-    animation-delay: 0.5s;
+    font-family: var(--retro-font);
 }
 .hero-text p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    opacity: 0;
-    animation: fade-in-up 1s forwards;
-    animation-delay: 0.8s;
+    max-width: 600px;
 }
-@keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: var(--bg-color);
+    color: #000;
     padding: 0.75rem 2rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    border: none;
+    border: 2px solid var(--accent-color);
     cursor: pointer;
-    transition: transform 0.3s ease;
-    opacity: 0;
-    animation: fade-in-up 1s forwards;
-    animation-delay: 1.1s;
+    transition: all 0.3s ease;
 }
 .cta-button:hover {
+    background-color: transparent;
+    color: var(--accent-color);
     transform: scale(1.05);
-}
-.hero-tech-effect {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: radial-gradient(circle, rgba(0,188,212,0.1) 0%, rgba(0,188,212,0) 70%);
-    animation: pulse 4s infinite ease-in-out;
-}
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.1; }
-    50% { transform: scale(1.2); opacity: 0.2; }
-    100% { transform: scale(1); opacity: 0.1; }
 }
 
 /* About Section */
-.about-section p {
+.about-content {
     max-width: 800px;
-    margin: 1rem auto;
-    text-align: center;
-}
-
-/* Projects Section (Now Game Section) */
-.projects-section {
-    text-align: center;
-}
-.game-instructions {
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    color: var(--accent-color);
-}
-.game-container {
-    position: relative;
-    width: 400px;
-    height: 400px;
     margin: 0 auto;
-}
-#gameCanvas {
-    background-color: var(--card-bg);
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-#gameOverScreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #f0f0f0;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-}
-#gameOverScreen h2 {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-}
-#gameOverScreen p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
-}
-#restartButton {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    padding: 0.75rem 2rem;
-    border-radius: 5px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-#restartButton:hover {
-    transform: scale(1.05);
-}
-.hidden {
-    display: none !important;
+    gap: 1rem;
 }
 
+/* Events Section - Timeline */
+.events-section .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.events-section .timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--accent-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    opacity: 0.5;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    /* This makes the single item center itself relative to the parent's 50% width */
+    margin: 0 auto; 
+    left: -25%;
+    text-align: left;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    text-align: left;
+}
+
+/* For a single item, let's just center it */
+.timeline-item:only-child {
+    width: 100%;
+    left: 0;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.timeline-item:only-child .timeline-dot {
+    left: 50%;
+    margin-left: -10px;
+}
+.timeline-item:only-child .timeline-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+.timeline-dot {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-color);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--card-bg);
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-color);
+}
+
+.timeline-content h3 {
+    color: var(--accent-color);
+    font-family: var(--retro-font);
+    font-size: 1.5rem;
+}
+
+/* Projects Section */
+.project-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-header h3 {
+    font-size: 1.8rem;
+    font-family: var(--retro-font);
+}
+
+.project-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.project-status.completed {
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.project-status.in-progress {
+    background-color: var(--progress-color);
+    color: #fff;
+}
+
+.project-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 1rem 0;
+}
+
+.project-card ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.project-card ul li::before {
+    content: '»';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.project-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.retro-button {
+    font-family: var(--retro-font);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border: 2px solid var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.retro-button:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000;
+}
+
+.retro-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 /* Contact Section */
 .contact-section {
@@ -282,102 +427,64 @@ section {
     align-items: center;
     gap: 0.5rem;
     background-color: var(--accent-color);
-    color: var(--bg-color);
+    color: #000;
     padding: 0.75rem 2rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 .contact-button.linkedin {
-    background-color: #0077b5; /* LinkedIn official color */
+    background-color: #0077b5;
+    color: #fff;
+}
+.contact-button.github {
+    background-color: #333;
     color: #fff;
 }
 .contact-button:hover {
     transform: scale(1.05);
 }
 
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    background-color: var(--secondary-color);
+    font-family: var(--retro-font);
+}
+
+/* Animations */
+.pop-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.pop-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* Media Queries */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
+    .nav-links { display: none; }
     .hero-text h1 { font-size: 2.5rem; }
     .hero-text p { font-size: 1rem; }
     section { padding: 3rem 1rem; }
-    .game-container, #gameCanvas {
-        width: 320px;
-        height: 320px;
+    
+    .events-section .timeline::after { left: 10px; }
+    .timeline-item, 
+    .timeline-item:nth-child(odd), 
+    .timeline-item:nth-child(even) { 
+        width: 100%; 
+        padding-left: 50px; 
+        padding-right: 10px;
+        left: 0;
+        text-align: left;
     }
+    .timeline-dot { left: 0; }
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhanish Ali | Developer</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
 
-    <div class="preloader">
-        <div class="loader-circle"></div>
-    </div>
-
-    <main class="content-wrapper">
-        <header>
-            <nav class="main-nav">
-                <a href="#home" class="nav-logo">Dhanish</a>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="home" class="hero-section">
-            <div class="hero-text">
-                <h1>Hello, I'm Dhanish.</h1>
-                <p>I'm a Developer focused on creating beautiful, functional, and modern web experiences.</p>
-                <button class="cta-button">View My Work</button>
-            </div>
-            <div class="hero-tech-effect"></div>
-        </section>
-
-        <section id="about" class="about-section">
-            <h2>About Me</h2>
-            <p>I am passionate about technology and always learning new things. My skills include HTML, CSS, JavaScript, and more.</p>
-        </section>
-
-        <section id="projects" class="projects-section">
-            <h2>My Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Project One</h3>
-                    <p>A description of a cool web project.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Two</h3>
-                    <p>A description of another awesome project.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>A description of a third project.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <h2>Get in Touch</h2>
-            <p>I'm always open to new opportunities. Feel free to reach out to me.</p>
-            <a href="mailto:your-email@example.com" class="contact-button">Email Me</a>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
